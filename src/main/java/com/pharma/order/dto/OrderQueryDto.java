@@ -1,6 +1,7 @@
 package com.pharma.order.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class OrderQueryDto implements Serializable {
 
@@ -8,17 +9,17 @@ public class OrderQueryDto implements Serializable {
 
 	private OrderDto orderDto;
 	private RatingDto ratingDto;
-	private OrderHistoryDto orderHistoryDto;
+	private List<OrderHistoryDto> orderHistoryDtos;
 
 	public OrderQueryDto() {
 		super();
 	}
 
-	public OrderQueryDto(OrderDto orderDto, RatingDto ratingDto, OrderHistoryDto orderHistoryDto) {
+	public OrderQueryDto(OrderDto orderDto, RatingDto ratingDto, List<OrderHistoryDto> orderHistoryDtos) {
 		super();
 		this.orderDto = orderDto;
 		this.ratingDto = ratingDto;
-		this.orderHistoryDto = orderHistoryDto;
+		this.orderHistoryDtos = orderHistoryDtos;
 	}
 
 	public OrderDto getOrderDto() {
@@ -37,18 +38,17 @@ public class OrderQueryDto implements Serializable {
 		this.ratingDto = ratingDto;
 	}
 
-	public OrderHistoryDto getOrderHistoryDto() {
-		return orderHistoryDto;
+	public List<OrderHistoryDto> getOrderHistoryDtos() {
+		return orderHistoryDtos;
 	}
 
-	public void setOrderHistoryDto(OrderHistoryDto orderHistoryDto) {
-		this.orderHistoryDto = orderHistoryDto;
+	public void setOrderHistoryDtos(List<OrderHistoryDto> orderHistoryDtos) {
+		this.orderHistoryDtos = orderHistoryDtos;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderQueryDto [orderDto=" + orderDto + ", ratingDto=" + ratingDto + ", orderHistoryDto="
-				+ orderHistoryDto + "]";
-	}
-
+		return "OrderQueryDto [orderDto=" + orderDto + ", ratingDto=" + ratingDto + ", orderHistoryDtos="
+				+ orderHistoryDtos + "]";
+	}	
 }

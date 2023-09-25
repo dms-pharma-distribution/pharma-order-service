@@ -4,15 +4,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 
 @SpringBootApplication
 public class PharmaOrderServiceApplication {
@@ -29,14 +25,12 @@ public class PharmaOrderServiceApplication {
 		SpringApplication.run(PharmaOrderServiceApplication.class, args);
 	}
 
-	@Bean
-	@Primary
-	public ObjectMapper objectMapper() {
-		return new ObjectMapper()
-				.registerModule(new ParameterNamesModule())
-				.registerModule(new JavaTimeModule());				  
-				//.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-	}
+	/*
+	 * @Bean //@Primary public ObjectMapper objectMapper() { return new
+	 * ObjectMapper() .registerModule(new ParameterNamesModule())
+	 * .registerModule(new JavaTimeModule());
+	 * //.setSerializationInclusion(JsonInclude.Include.NON_NULL); }
+	 */
 
 	@Bean
 	public AmazonSQS amazonSQSClient() {

@@ -51,14 +51,6 @@ public class OrderEntity implements Serializable {
 	@Column(name = "source_type")
 	private String sourceType;
 
-	/*
-	 * @JsonSerialize(using = LocalDateTimeSerializer.class)
-	 * 
-	 * @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-	 * 
-	 * @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-	 */
-	//@CreationTimestamp
 	@Column(name = "created_date")
 	private LocalDateTime createdDate;
 
@@ -70,7 +62,7 @@ public class OrderEntity implements Serializable {
 	private OrderStatusEntity orderStatusEntity;
 
 	@JoinColumn(name = "supplier_retailer_id")
-	@OneToOne(mappedBy = "orderEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "orderEntity", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private SupplierRetailerEntity supplierRetailerEntity;
 
 	@JsonManagedReference("order-item")

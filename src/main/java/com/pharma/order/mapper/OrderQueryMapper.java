@@ -1,5 +1,6 @@
 package com.pharma.order.mapper;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -27,11 +28,11 @@ public class OrderQueryMapper {
 		this.orderMapper = orderMapper;
 	}
 
-	public OrderQueryDto mapToQueryDto(OrderEntity orderEntity, OrderHistoryEntity orderHistoryEntity,
+	public OrderQueryDto mapToQueryDto(OrderEntity orderEntity, List<OrderHistoryEntity> orderHistoryEntities,
 			RatingEntity ratingEntity) {
 		var orderQueryDto = new OrderQueryDto();
 		orderQueryDto.setOrderDto(mapToOrderDto(orderEntity));
-		orderQueryDto.setOrderHistoryDto(mapToOrderHistoryDto(orderHistoryEntity));
+		orderQueryDto.setOrderHistoryDtos(mapToOrderHistoryDtos(orderHistoryEntities));
 		orderQueryDto.setRatingDto(mapToRatingDto(ratingEntity));
 		return orderQueryDto;
 	}
@@ -61,8 +62,12 @@ public class OrderQueryMapper {
 		return orderMapper.toRatingDto(ratingEntity);
 	}
 
+	public List<OrderHistoryDto> mapToOrderHistoryDtos(List<OrderHistoryEntity> orderHistoryEntities){
+		return orderHistoryEntities.stream().map(orderHistoryEntity -> mapToOrderHistoryDto(orderHistoryEntity)).collect(Collectors.toList());
+	}
 	public OrderHistoryDto mapToOrderHistoryDto(OrderHistoryEntity orderHistoryEntity) {
 		return orderMapper.toOrderHistoryDto(orderHistoryEntity);
+		
 	}
 
 }

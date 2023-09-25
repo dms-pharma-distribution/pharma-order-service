@@ -3,13 +3,10 @@ package com.pharma.order.dto;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class OrderHistoryDto {
-	private long historyGuid;
+	private long historyId;
 	private int eventType;
 	private String eventDescription;
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime eventTimestamp;
 	private String eventSource;
 	private String updatedBy;
@@ -18,13 +15,12 @@ public class OrderHistoryDto {
 	private String newState;
 
 	public OrderHistoryDto() {
-		super();
 	}
 
-	public OrderHistoryDto(long historyGuid, int eventType, String eventDescription, LocalDateTime eventTimestamp,
+	public OrderHistoryDto(long historyId, int eventType, String eventDescription, LocalDateTime eventTimestamp,
 			String eventSource, String updatedBy, UUID orderGuid, String previousState, String newState) {
 		super();
-		this.historyGuid = historyGuid;
+		this.historyId = historyId;
 		this.eventType = eventType;
 		this.eventDescription = eventDescription;
 		this.eventTimestamp = eventTimestamp;
@@ -35,12 +31,12 @@ public class OrderHistoryDto {
 		this.newState = newState;
 	}
 
-	public long getHistoryGuid() {
-		return historyGuid;
+	public long getHistoryId() {
+		return historyId;
 	}
 
-	public void setHistoryGuid(long historyGuid) {
-		this.historyGuid = historyGuid;
+	public void setHistoryId(long historyId) {
+		this.historyId = historyId;
 	}
 
 	public int getEventType() {

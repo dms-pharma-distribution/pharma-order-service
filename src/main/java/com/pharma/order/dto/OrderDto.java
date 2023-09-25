@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class OrderDto {
 
 	private UUID orderGuid;
@@ -17,14 +15,10 @@ public class OrderDto {
 	private String paymentStatus;
 	private Boolean isFavourite;
 	private String createdBy;
-	private String sourceType;
-	
-	@JsonFormat(pattern = "yyy-MM-dd'T'HH:mm:ss'Z'")
-	private LocalDateTime createdDate;
-	
+	private String sourceType;	
+	private LocalDateTime createdDate;	
 	private OrderStatusDto orderStatusDto;
 	private SupplierRetailerDto supplierRetailerDto;
-
 	private List<ItemDto> itemDtos;
 
 	public OrderDto() {
